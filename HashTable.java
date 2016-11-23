@@ -1,11 +1,17 @@
 /**
  * My hash table.
- * @author Austin
+ * @author A-Arndt
  *
  */
 public class HashTable {
+    //Initialization of the table
     Bucket[] table = new Bucket[6];
 
+    /**
+    *The add function will add a hashed string to the table.
+    *@param string to be added
+    *@return true if added
+    */
     public boolean add(String value) {
         boolean found = false;
         boolean done = false;
@@ -29,6 +35,11 @@ public class HashTable {
         return done;
     }
 
+    /**
+    *The delete function will delete a hashed string from the table.
+    *@param string to be deleted
+    *@return true if deleted
+    */
     public boolean delete(String value) {
         boolean found = false;
         boolean done = false;
@@ -52,6 +63,12 @@ public class HashTable {
         return found;
     }
 
+    /**
+    *The probe function will create the index to be looked at.
+    *@param hash is the hash value to look at
+    *@param curTry is the current itteration that will be tried starting from 0.
+    *@return an int that will specifiy the index to attempt to add at.
+    */
     public int probe(long hash, int curTry) {
         return (int) ((hash + (curTry * curTry)) % table.length);
     }
