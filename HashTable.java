@@ -62,6 +62,32 @@ public class HashTable {
         }
         return found;
     }
+    
+     /**
+     * Used to find a specific item in the hash table.
+     * @param value the item you are looking for.
+     * @return true if found, false if not found.
+     */
+    public boolean find(String value) {
+        boolean found = false;
+        boolean done = false;
+        int thisTry = 0;
+        long hash = hash(value);
+        int maxTries = table.length;
+        while (!done && !found && thisTry < maxTries) {
+            int index = probe(hash, thisTry);
+            if (table[index] == null) {
+                done = true;
+            } else if (table[index].isDeleted()) {
+                thisTry++;
+            } else if (table[index].getWord().equals(value)) {
+                found = true;
+            } else {
+                thisTry++;
+            }
+        }
+        return found;
+    }
 
     /**
     *The probe function will create the index to be looked at.
