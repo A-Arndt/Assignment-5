@@ -5,7 +5,7 @@
  */
 public class HashTable {
     //Initialization of the table
-    Bucket[] table = new Bucket[6];
+    Bucket[] table = new Bucket[16000057];
 
     /**
     *The add function will add a hashed string to the table.
